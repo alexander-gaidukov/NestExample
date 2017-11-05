@@ -14,6 +14,10 @@
 		71ED8A6A1FAF0275002DF6A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71ED8A681FAF0275002DF6A9 /* LaunchScreen.storyboard */; };
 		71ED8A6D1FAF0275002DF6A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A6C1FAF0275002DF6A9 /* main.m */; };
 		71ED8A771FAF0275002DF6A9 /* NestExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A761FAF0275002DF6A9 /* NestExampleTests.m */; };
+		71ED8A841FAF029E002DF6A9 /* AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A831FAF029E002DF6A9 /* AccessToken.m */; };
+		71ED8A8A1FAF074F002DF6A9 /* AuthenticationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A891FAF074F002DF6A9 /* AuthenticationManager.m */; };
+		71ED8A8D1FAF0980002DF6A9 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A8C1FAF0980002DF6A9 /* Constants.m */; };
+		71ED8A911FAF33E6002DF6A9 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A901FAF33E6002DF6A9 /* Keychain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,15 @@
 		71ED8A721FAF0275002DF6A9 /* NestExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NestExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71ED8A761FAF0275002DF6A9 /* NestExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NestExampleTests.m; sourceTree = "<group>"; };
 		71ED8A781FAF0275002DF6A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71ED8A821FAF029E002DF6A9 /* AccessToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccessToken.h; sourceTree = "<group>"; };
+		71ED8A831FAF029E002DF6A9 /* AccessToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccessToken.m; sourceTree = "<group>"; };
+		71ED8A861FAF0315002DF6A9 /* JSONDecodable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONDecodable.h; sourceTree = "<group>"; };
+		71ED8A881FAF074F002DF6A9 /* AuthenticationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthenticationManager.h; sourceTree = "<group>"; };
+		71ED8A891FAF074F002DF6A9 /* AuthenticationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthenticationManager.m; sourceTree = "<group>"; };
+		71ED8A8B1FAF0980002DF6A9 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		71ED8A8C1FAF0980002DF6A9 /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		71ED8A8F1FAF33E6002DF6A9 /* Keychain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
+		71ED8A901FAF33E6002DF6A9 /* Keychain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Keychain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,9 +94,14 @@
 		71ED8A5C1FAF0275002DF6A9 /* NestExample */ = {
 			isa = PBXGroup;
 			children = (
+				71ED8A8E1FAF33D0002DF6A9 /* Keychain */,
+				71ED8A871FAF0731002DF6A9 /* Authentication */,
+				71ED8A811FAF027E002DF6A9 /* Models */,
 				71ED8A5D1FAF0275002DF6A9 /* AppDelegate.h */,
 				71ED8A5E1FAF0275002DF6A9 /* AppDelegate.m */,
 				71ED8A601FAF0275002DF6A9 /* ViewController.h */,
+				71ED8A8B1FAF0980002DF6A9 /* Constants.h */,
+				71ED8A8C1FAF0980002DF6A9 /* Constants.m */,
 				71ED8A611FAF0275002DF6A9 /* ViewController.m */,
 				71ED8A631FAF0275002DF6A9 /* Main.storyboard */,
 				71ED8A661FAF0275002DF6A9 /* Assets.xcassets */,
@@ -101,6 +119,34 @@
 				71ED8A781FAF0275002DF6A9 /* Info.plist */,
 			);
 			path = NestExampleTests;
+			sourceTree = "<group>";
+		};
+		71ED8A811FAF027E002DF6A9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				71ED8A861FAF0315002DF6A9 /* JSONDecodable.h */,
+				71ED8A821FAF029E002DF6A9 /* AccessToken.h */,
+				71ED8A831FAF029E002DF6A9 /* AccessToken.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		71ED8A871FAF0731002DF6A9 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				71ED8A881FAF074F002DF6A9 /* AuthenticationManager.h */,
+				71ED8A891FAF074F002DF6A9 /* AuthenticationManager.m */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		71ED8A8E1FAF33D0002DF6A9 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				71ED8A8F1FAF33E6002DF6A9 /* Keychain.h */,
+				71ED8A901FAF33E6002DF6A9 /* Keychain.m */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,9 +251,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71ED8A8A1FAF074F002DF6A9 /* AuthenticationManager.m in Sources */,
+				71ED8A911FAF33E6002DF6A9 /* Keychain.m in Sources */,
 				71ED8A621FAF0275002DF6A9 /* ViewController.m in Sources */,
 				71ED8A6D1FAF0275002DF6A9 /* main.m in Sources */,
 				71ED8A5F1FAF0275002DF6A9 /* AppDelegate.m in Sources */,
+				71ED8A841FAF029E002DF6A9 /* AccessToken.m in Sources */,
+				71ED8A8D1FAF0980002DF6A9 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
