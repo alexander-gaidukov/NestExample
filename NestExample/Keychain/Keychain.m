@@ -42,8 +42,6 @@
         data = (__bridge_transfer NSData *)foundDict;
     }
     
-    CFRelease(foundDict);
-    
     return nil;
 }
 

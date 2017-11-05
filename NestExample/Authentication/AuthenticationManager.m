@@ -46,12 +46,25 @@
     return self.accessToken.token;
 }
 
+- (NSURL *)redirectURL {
+    return [NSURL URLWithString:NestRedirectURLString];
+}
+
+- (NSURL *)authenticationURL {
+    NSString *urlString = [NSString stringWithFormat:@"https://home.nest.com/login/oauth2?client_id=%@&state=STATE", self.productId];
+    return [NSURL URLWithString:urlString];
+}
+
 - (BOOL)isValidSession {
     if (self.accessToken) {
         return  [[NSDate date] compare:self.accessToken.expirationDate] == NSOrderedAscending;
     }
     return NO;
  }
+
+- (void)signInWithCode:(NSString *)code completion:(void (^)(BOOL, NSError * _Nullable))completionBlock {
+    
+}
 
 #pragma mark private
 

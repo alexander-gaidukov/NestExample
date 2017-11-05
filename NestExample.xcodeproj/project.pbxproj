@@ -18,6 +18,7 @@
 		71ED8A8A1FAF074F002DF6A9 /* AuthenticationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A891FAF074F002DF6A9 /* AuthenticationManager.m */; };
 		71ED8A8D1FAF0980002DF6A9 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A8C1FAF0980002DF6A9 /* Constants.m */; };
 		71ED8A911FAF33E6002DF6A9 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A901FAF33E6002DF6A9 /* Keychain.m */; };
+		71ED8A941FAF3F37002DF6A9 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A931FAF3F37002DF6A9 /* AuthenticationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		71ED8A8C1FAF0980002DF6A9 /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		71ED8A8F1FAF33E6002DF6A9 /* Keychain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
 		71ED8A901FAF33E6002DF6A9 /* Keychain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Keychain.m; sourceTree = "<group>"; };
+		71ED8A921FAF3F37002DF6A9 /* AuthenticationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthenticationViewController.h; sourceTree = "<group>"; };
+		71ED8A931FAF3F37002DF6A9 /* AuthenticationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthenticationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,9 +103,9 @@
 				71ED8A5D1FAF0275002DF6A9 /* AppDelegate.h */,
 				71ED8A5E1FAF0275002DF6A9 /* AppDelegate.m */,
 				71ED8A601FAF0275002DF6A9 /* ViewController.h */,
+				71ED8A611FAF0275002DF6A9 /* ViewController.m */,
 				71ED8A8B1FAF0980002DF6A9 /* Constants.h */,
 				71ED8A8C1FAF0980002DF6A9 /* Constants.m */,
-				71ED8A611FAF0275002DF6A9 /* ViewController.m */,
 				71ED8A631FAF0275002DF6A9 /* Main.storyboard */,
 				71ED8A661FAF0275002DF6A9 /* Assets.xcassets */,
 				71ED8A681FAF0275002DF6A9 /* LaunchScreen.storyboard */,
@@ -136,6 +139,8 @@
 			children = (
 				71ED8A881FAF074F002DF6A9 /* AuthenticationManager.h */,
 				71ED8A891FAF074F002DF6A9 /* AuthenticationManager.m */,
+				71ED8A921FAF3F37002DF6A9 /* AuthenticationViewController.h */,
+				71ED8A931FAF3F37002DF6A9 /* AuthenticationViewController.m */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71ED8A941FAF3F37002DF6A9 /* AuthenticationViewController.m in Sources */,
 				71ED8A8A1FAF074F002DF6A9 /* AuthenticationManager.m in Sources */,
 				71ED8A911FAF33E6002DF6A9 /* Keychain.m in Sources */,
 				71ED8A621FAF0275002DF6A9 /* ViewController.m in Sources */,
