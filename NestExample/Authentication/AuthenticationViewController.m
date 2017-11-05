@@ -68,20 +68,30 @@
     [self.activityIndicator startAnimating];
     
     [[AuthenticationManager sharedInstance] signInWithCode:code completion:^(BOOL success, NSError * _Nullable error) {
-        [self.activityIndicator stopAnimating];
-        if (self.delegate) {
-            [self.delegate authenticationViewControllerDidFinish:self];
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.activityIndicator stopAnimating];
+            if (success) {
+                if (self.delegate) {
+                    [self.delegate authenticationViewControllerDidFinish:self];
+                }
+            } else {
+                [self showErrorMessage:error.localizedDescription];
+            }
+        });
     }];
+}
+
+- (void)showErrorMessage:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - WKNavigationDelegate
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     [self.activityIndicator stopAnimating];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
+    [self showErrorMessage:error.localizedDescription];
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {

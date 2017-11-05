@@ -63,7 +63,31 @@
  }
 
 - (void)signInWithCode:(NSString *)code completion:(void (^)(BOOL, NSError * _Nullable))completionBlock {
+    NSString *urlString = [NSString stringWithFormat:@"https://api.home.nest.com/oauth2/access_token?client_id=%@&client_secret=%@&code=%@&grant_type=authorization_code", self.productId, self.productSecret, code];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"POST";
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     
+    NSURLSessionDataTask* dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        BOOL success = NO;
+        
+        if (data) {
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+            if (json) {
+                AccessToken *accessToken = [[AccessToken alloc] initWith:json];
+                success = [Keychain saveValue:[NSKeyedArchiver archivedDataWithRootObject:accessToken] forIdentifier:@"access_token"];
+            }
+        }
+        
+        if (completionBlock) {
+            completionBlock(success, error);
+        }
+        
+    }];
+    
+    [dataTask resume];
 }
 
 #pragma mark private
