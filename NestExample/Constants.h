@@ -11,3 +11,4 @@
 extern NSString * const NestProductID;
 extern NSString * const NestProductSecret;
 extern NSString * const NestRedirectURLString;
+extern NSString * const NestAPIEndpoint;

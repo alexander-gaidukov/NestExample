@@ -9,6 +9,7 @@
 #import "NestNavigationController.h"
 #import "AuthenticationManager.h"
 #import "AuthenticationViewController.h"
+#import "ViewController.h"
 
 @interface NestNavigationController ()<AuthenticationManagerDelegate>
 
@@ -32,6 +33,7 @@
         });
         return;
     }
+    [self didLogin];
 }
 
 - (void)showAuthenticationController {
@@ -43,10 +45,15 @@
     return [AuthenticationManager sharedInstance];
 }
 
+- (void)didLogin {
+    [(ViewController *)[self.viewControllers firstObject] loadStructures];
+}
+
 #pragma mark - AuthenticationManagerDelegate
 
 - (void)authenticationManagerDidLogin:(AuthenticationManager *)authenticationManager {
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self didLogin];
 }
 
 - (void)authenticationManagerDidLogout:(AuthenticationManager *)authenticationManager {

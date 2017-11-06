@@ -8,8 +8,9 @@
 
 #import "ViewController.h"
 #import "AuthenticationManager.h"
+#import "StructureManager.h"
 
-@interface ViewController ()
+@interface ViewController ()<StructureManagerDelegate>
 
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
@@ -37,6 +38,20 @@
     [self.navigationItem setRightBarButtonItem:logoutButton];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [StructureManager sharedInstance].delegate = self;
+}
+
+- (void)loadStructures {
+    [self.activityIndicator startAnimating];
+    [[StructureManager sharedInstance] loadStructuresWithCompletion:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.activityIndicator stopAnimating];
+        });
+    }];
+}
+
 - (void)logout {
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Nest Example" message:@"Do you really want to log out?" preferredStyle:UIAlertControllerStyleAlert];
@@ -46,6 +61,13 @@
     }]];
     
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+#pragma mark - StructureManagerDelegate
+- (void)structureManagerDidUpdateData:(StructureManager *)structureManager {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Update tableView
+    });
 }
 
 @end
