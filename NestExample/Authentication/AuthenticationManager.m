@@ -15,7 +15,7 @@
 
 @property(nonatomic, strong) NSString *productId;
 @property(nonatomic, strong) NSString *productSecret;
-@property(nonatomic, strong, readonly) AccessToken *accessToken;
+@property(nonatomic, strong) AccessToken *accessToken;
 
 @end
 
@@ -56,8 +56,9 @@
 }
 
 - (BOOL)isValidSession {
-    if (self.accessToken) {
-        return  [[NSDate date] compare:self.accessToken.expirationDate] == NSOrderedAscending;
+    AccessToken *accessToken = self.accessToken;
+    if (accessToken) {
+        return  [[NSDate date] compare: accessToken.expirationDate] == NSOrderedAscending;
     }
     return NO;
  }
@@ -77,7 +78,11 @@
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
             if (json) {
                 AccessToken *accessToken = [[AccessToken alloc] initWith:json];
-                success = [Keychain saveValue:[NSKeyedArchiver archivedDataWithRootObject:accessToken] forIdentifier:@"access_token"];
+                self.accessToken = accessToken;
+                success = YES;
+                if (self.delegate) {
+                    [self.delegate authenticationManagerDidLogin:self];
+                }
             }
         }
         
@@ -90,6 +95,13 @@
     [dataTask resume];
 }
 
+- (void)didLogout {
+    self.accessToken = nil;
+    if (self.delegate) {
+        [self.delegate authenticationManagerDidLogout:self];
+    }
+}
+
 #pragma mark private
 
 - (AccessToken *)accessToken {
@@ -98,6 +110,14 @@
         return  [NSKeyedUnarchiver unarchiveObjectWithData:accessTokenData];
     }
     return nil;
+}
+
+- (void)setAccessToken:(AccessToken *)accessToken {
+    if (accessToken) {
+        [Keychain saveValue:[NSKeyedArchiver archivedDataWithRootObject:accessToken] forIdentifier:@"access_token"];
+    } else {
+        [Keychain deleteItemForIdentifier:@"access_token"];
+    }
 }
 
 @end

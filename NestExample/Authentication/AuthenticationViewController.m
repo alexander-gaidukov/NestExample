@@ -14,7 +14,6 @@
 
 @property (nonatomic, strong) NSURL *authenticationURL;
 @property (nonatomic, strong) NSURL *redirectURL;
-@property (nonatomic, weak) id<AuthenticationViewControllerDelegate> delegate;
 @property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
@@ -22,11 +21,10 @@
 
 @implementation AuthenticationViewController
 
-- (instancetype) initWithAuthenticationURL:(NSURL *)authURL redirectURL:(NSURL *)redirectURL delegate:(id<AuthenticationViewControllerDelegate>)delegate {
+- (instancetype) initWithAuthenticationURL:(NSURL *)authURL redirectURL:(NSURL *)redirectURL {
     if(self = [super init]) {
         self.authenticationURL = authURL;
         self.redirectURL = redirectURL;
-        self.delegate = delegate;
     }
     return self;
 }
@@ -70,11 +68,7 @@
     [[AuthenticationManager sharedInstance] signInWithCode:code completion:^(BOOL success, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.activityIndicator stopAnimating];
-            if (success) {
-                if (self.delegate) {
-                    [self.delegate authenticationViewControllerDidFinish:self];
-                }
-            } else {
+            if (error) {
                 [self showErrorMessage:error.localizedDescription];
             }
         });

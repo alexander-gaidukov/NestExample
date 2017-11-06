@@ -8,14 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class AuthenticationViewController;
-
-@protocol AuthenticationViewControllerDelegate<NSObject>
-- (void)authenticationViewControllerDidFinish: (AuthenticationViewController *)authenticationViewController;
-@end
-
 @interface AuthenticationViewController : UIViewController
 
-- (instancetype)initWithAuthenticationURL:(NSURL *)authURL redirectURL:(NSURL *)redirectURL delegate:(id<AuthenticationViewControllerDelegate>)delegate;
+- (instancetype)initWithAuthenticationURL:(NSURL *)authURL redirectURL:(NSURL *)redirectURL;
 
 @end

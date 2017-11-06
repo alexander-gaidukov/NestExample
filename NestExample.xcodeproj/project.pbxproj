@@ -19,6 +19,10 @@
 		71ED8A8D1FAF0980002DF6A9 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A8C1FAF0980002DF6A9 /* Constants.m */; };
 		71ED8A911FAF33E6002DF6A9 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A901FAF33E6002DF6A9 /* Keychain.m */; };
 		71ED8A941FAF3F37002DF6A9 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A931FAF3F37002DF6A9 /* AuthenticationViewController.m */; };
+		71ED8A9C1FB05ABE002DF6A9 /* RESTClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A9B1FB05ABE002DF6A9 /* RESTClient.m */; };
+		71ED8AA21FB05D3C002DF6A9 /* NSURL+Nest.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8AA11FB05D3C002DF6A9 /* NSURL+Nest.m */; };
+		71ED8AA51FB0611B002DF6A9 /* NSMutableURLRequest+Nest.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8AA41FB0611B002DF6A9 /* NSMutableURLRequest+Nest.m */; };
+		71ED8AA81FB068DA002DF6A9 /* NestNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8AA71FB068DA002DF6A9 /* NestNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,14 @@
 		71ED8A901FAF33E6002DF6A9 /* Keychain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Keychain.m; sourceTree = "<group>"; };
 		71ED8A921FAF3F37002DF6A9 /* AuthenticationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthenticationViewController.h; sourceTree = "<group>"; };
 		71ED8A931FAF3F37002DF6A9 /* AuthenticationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthenticationViewController.m; sourceTree = "<group>"; };
+		71ED8A9A1FB05ABE002DF6A9 /* RESTClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RESTClient.h; sourceTree = "<group>"; };
+		71ED8A9B1FB05ABE002DF6A9 /* RESTClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RESTClient.m; sourceTree = "<group>"; };
+		71ED8AA01FB05D3C002DF6A9 /* NSURL+Nest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURL+Nest.h"; sourceTree = "<group>"; };
+		71ED8AA11FB05D3C002DF6A9 /* NSURL+Nest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Nest.m"; sourceTree = "<group>"; };
+		71ED8AA31FB0611B002DF6A9 /* NSMutableURLRequest+Nest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Nest.h"; sourceTree = "<group>"; };
+		71ED8AA41FB0611B002DF6A9 /* NSMutableURLRequest+Nest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+Nest.m"; sourceTree = "<group>"; };
+		71ED8AA61FB068DA002DF6A9 /* NestNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NestNavigationController.h; sourceTree = "<group>"; };
+		71ED8AA71FB068DA002DF6A9 /* NestNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NestNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +109,7 @@
 		71ED8A5C1FAF0275002DF6A9 /* NestExample */ = {
 			isa = PBXGroup;
 			children = (
+				71ED8A991FB05A9A002DF6A9 /* REST */,
 				71ED8A8E1FAF33D0002DF6A9 /* Keychain */,
 				71ED8A871FAF0731002DF6A9 /* Authentication */,
 				71ED8A811FAF027E002DF6A9 /* Models */,
@@ -104,6 +117,8 @@
 				71ED8A5E1FAF0275002DF6A9 /* AppDelegate.m */,
 				71ED8A601FAF0275002DF6A9 /* ViewController.h */,
 				71ED8A611FAF0275002DF6A9 /* ViewController.m */,
+				71ED8AA61FB068DA002DF6A9 /* NestNavigationController.h */,
+				71ED8AA71FB068DA002DF6A9 /* NestNavigationController.m */,
 				71ED8A8B1FAF0980002DF6A9 /* Constants.h */,
 				71ED8A8C1FAF0980002DF6A9 /* Constants.m */,
 				71ED8A631FAF0275002DF6A9 /* Main.storyboard */,
@@ -152,6 +167,19 @@
 				71ED8A901FAF33E6002DF6A9 /* Keychain.m */,
 			);
 			path = Keychain;
+			sourceTree = "<group>";
+		};
+		71ED8A991FB05A9A002DF6A9 /* REST */ = {
+			isa = PBXGroup;
+			children = (
+				71ED8A9A1FB05ABE002DF6A9 /* RESTClient.h */,
+				71ED8A9B1FB05ABE002DF6A9 /* RESTClient.m */,
+				71ED8AA01FB05D3C002DF6A9 /* NSURL+Nest.h */,
+				71ED8AA11FB05D3C002DF6A9 /* NSURL+Nest.m */,
+				71ED8AA31FB0611B002DF6A9 /* NSMutableURLRequest+Nest.h */,
+				71ED8AA41FB0611B002DF6A9 /* NSMutableURLRequest+Nest.m */,
+			);
+			path = REST;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +288,11 @@
 				71ED8A8A1FAF074F002DF6A9 /* AuthenticationManager.m in Sources */,
 				71ED8A911FAF33E6002DF6A9 /* Keychain.m in Sources */,
 				71ED8A621FAF0275002DF6A9 /* ViewController.m in Sources */,
+				71ED8AA51FB0611B002DF6A9 /* NSMutableURLRequest+Nest.m in Sources */,
+				71ED8AA21FB05D3C002DF6A9 /* NSURL+Nest.m in Sources */,
 				71ED8A6D1FAF0275002DF6A9 /* main.m in Sources */,
+				71ED8AA81FB068DA002DF6A9 /* NestNavigationController.m in Sources */,
+				71ED8A9C1FB05ABE002DF6A9 /* RESTClient.m in Sources */,
 				71ED8A5F1FAF0275002DF6A9 /* AppDelegate.m in Sources */,
 				71ED8A841FAF029E002DF6A9 /* AccessToken.m in Sources */,
 				71ED8A8D1FAF0980002DF6A9 /* Constants.m in Sources */,
