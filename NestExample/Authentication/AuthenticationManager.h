@@ -27,6 +27,7 @@
 - (BOOL)isValidSession;
 - (void)signInWithCode:(NSString *_Nonnull)code completion: (void(^_Nonnull)(BOOL, NSError *_Nullable))completionBlock;
 
+- (void)logout;
 - (void)didLogout;
 
 @end

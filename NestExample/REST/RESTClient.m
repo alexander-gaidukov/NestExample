@@ -32,7 +32,7 @@
     return [self loadRequest:request success:success failuer:failure];
 }
 
-- (NSURLSessionDataTask *)loadRequest:(NSURLRequest *)request success:(void (^)(NSDictionary *))success failuer:(void(^)(NSError * error))failure {
+- (NSURLSessionDataTask *)loadRequest:(NSMutableURLRequest *)request success:(void (^)(NSDictionary *))success failuer:(void(^)(NSError * error))failure {
     __weak typeof(self) weakSelf = self;
     
     __block NSURLSessionDataTask *task = nil;
@@ -53,10 +53,7 @@
         if (httpResponse.statusCode == 401 && contentLength == 0) {
             [[AuthenticationManager sharedInstance] didLogout];
         } else if (httpResponse.statusCode == 401 || httpResponse.statusCode == 307) {
-            NSMutableURLRequest *redirectRequest = [[NSMutableURLRequest alloc] initWithURL:response.URL];
-            redirectRequest.HTTPMethod = request.HTTPMethod;
-            redirectRequest.HTTPBody = request.HTTPBody;
-            redirectRequest.allHTTPHeaderFields = request.allHTTPHeaderFields;
+            [request setURL:response.URL];
             task = [strongSelf loadRequest:request success:success failuer:failure];
         } else if (httpResponse.statusCode >= 200 && httpResponse.statusCode < 300) {
             if (success) {

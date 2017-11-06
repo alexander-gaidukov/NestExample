@@ -71,7 +71,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     
-    NSURLSessionDataTask* dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         BOOL success = NO;
         
         if (data) {
@@ -90,9 +90,17 @@
             completionBlock(success, error);
         }
         
-    }];
+    }] resume];
+}
+
+- (void)logout {
+    NSString* urlString = [NSString stringWithFormat:@"https://api.home.nest.com/oauth2/access_tokens/%@", self.token];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
+    request.HTTPMethod = @"DELETE";
     
-    [dataTask resume];
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request] resume];
+    
+    [self didLogout];
 }
 
 - (void)didLogout {
