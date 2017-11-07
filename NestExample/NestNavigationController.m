@@ -9,7 +9,7 @@
 #import "NestNavigationController.h"
 #import "AuthenticationManager.h"
 #import "AuthenticationViewController.h"
-#import "ViewController.h"
+#import "StructuresViewController.h"
 
 @interface NestNavigationController ()<AuthenticationManagerDelegate>
 
@@ -46,7 +46,7 @@
 }
 
 - (void)didLogin {
-    [(ViewController *)[self.viewControllers firstObject] loadStructures];
+    [(StructuresViewController *)[self.viewControllers firstObject] loadStructures];
 }
 
 #pragma mark - AuthenticationManagerDelegate

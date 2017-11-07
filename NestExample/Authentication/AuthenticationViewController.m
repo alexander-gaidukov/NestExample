@@ -36,7 +36,9 @@
     self.webView.navigationDelegate = self;
     [self.view addSubview:self.webView];
     self.webView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.webView.scrollView setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+    if (@available(iOS 11.0, *)) {
+        [self.webView.scrollView setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+    }
     [NSLayoutConstraint activateConstraints:@[
                                               [self.webView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
                                               [self.webView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],

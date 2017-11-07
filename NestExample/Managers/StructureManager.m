@@ -52,6 +52,7 @@
         }
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
+        [strongSelf.mutableStructures removeAllObjects];
         NSArray *allValues = json.allValues;
         for (NSDictionary *structureJSON in allValues) {
             Structure *structure = [[Structure alloc] initWith:structureJSON];

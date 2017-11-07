@@ -6,11 +6,12 @@
 //  Copyright © 2017 Alexandr Gaidukov. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "StructuresViewController.h"
 #import "AuthenticationManager.h"
 #import "StructureManager.h"
+#import "StructureTableViewCell.h"
 
-@interface ViewController ()<StructureManagerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface StructuresViewController ()<StructureManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -18,7 +19,7 @@
 
 @end
 
-@implementation ViewController
+@implementation StructuresViewController
 
 - (void)loadView {
     [super loadView];
@@ -61,7 +62,9 @@
 
 - (void)configureTableView {
     self.structuresTableView.layoutMargins = UIEdgeInsetsZero;
-    // register Nib
+    self.structuresTableView.separatorInset = UIEdgeInsetsZero;
+    self.structuresTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self.structuresTableView registerClass:[StructureTableViewCell class] forCellReuseIdentifier:NSStringFromClass([StructureTableViewCell class])];
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(loadStructures) forControlEvents:UIControlEventValueChanged];
     [self.structuresTableView addSubview:self.refreshControl];
@@ -109,13 +112,16 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    exit(-1);
+    
+    StructureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([StructureTableViewCell class]) forIndexPath:indexPath];
+    [cell configureWithStructure: [[StructureManager sharedInstance].structures objectAtIndex: indexPath.row]];
+    return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60.0
+    return 60.0;
 }
 
 @end
