@@ -12,6 +12,9 @@
 @interface Thermostat : NSObject<JSONDecodable>
 
 @property (nonatomic, strong, readonly) NSString *thermostatId;
+@property (nonatomic, strong, readonly) NSString *name;
+@property (nonatomic, strong, readonly) NSNumber *currentTemperature;
+@property (nonatomic, strong) NSNumber *targetTemperature;
 
 - (instancetype)initWithId:(NSString *)thermostatId;
 

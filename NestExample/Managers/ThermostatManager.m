@@ -18,6 +18,9 @@
 @property (nonatomic, strong) RESTClient *client;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) void (^completionBlock)(NSError *);
+
+@property (nonatomic, strong) NSURLSessionDataTask* task;
+
 @end
 
 @implementation ThermostatManager
@@ -55,20 +58,32 @@
 }
 
 - (void)pollThermostatData {
+    
+    if (self.task) { // loading is in progress
+        return;
+    }
+    
     __weak typeof(self) weakSelf = self;
     
-    [self.client loadFromPath:[NSString stringWithFormat:@"devices/thermostats/%@/", self.thermostat.thermostatId] method:HTTPMethodGET params:[NSDictionary dictionary] success:^(NSDictionary *json) {
+    self.task = [self.client loadFromPath:[NSString stringWithFormat:@"devices/thermostats/%@/", self.thermostat.thermostatId] method:HTTPMethodGET params:[NSDictionary dictionary] success:^(NSDictionary *json) {
         if(!weakSelf) {
             return;
         }
-        //__strong typeof(weakSelf) strongSelf = weakSelf;
-        NSData *data = [NSJSONSerialization dataWithJSONObject:json options:0 error:nil];
-        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@", string);
-    } failure:^(NSError *error) {
-        if (self.completionBlock) {
-            self.completionBlock(error);
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.thermostat updateWith:json];
+        if(strongSelf.delegate) {
+            [strongSelf.delegate thermostatManagerDidUpdateThermostatData:self];
         }
+        strongSelf.task = nil;
+    } failure:^(NSError *error) {
+        if(!weakSelf) {
+            return;
+        }
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        if (strongSelf.completionBlock) {
+            strongSelf.completionBlock(error);
+        }
+        strongSelf.task = nil;
     }];
 }
 

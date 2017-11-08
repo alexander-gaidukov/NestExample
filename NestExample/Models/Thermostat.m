@@ -10,13 +10,15 @@
 
 @interface Thermostat()
 @property (nonatomic, strong) NSString *thermostatId;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSNumber *currentTemperature;
 @end
 
 @implementation Thermostat
 
 - (instancetype)initWith:(NSDictionary *)json {
     if(self = [super init]) {
-        self.thermostatId = [json objectForKey:@"thermostat_id"];
+        [self updateWith:json];
     }
     
     return self;
@@ -28,6 +30,13 @@
     }
     
     return self;
+}
+
+- (void)updateWith:(NSDictionary *)json {
+    self.thermostatId = [json objectForKey:@"thermostat_id"];
+    self.name = [json objectForKey:@"name_long"];
+    self.currentTemperature = [json objectForKey:@"ambient_temperature_c"];
+    self.targetTemperature = [json objectForKey:@"target_temperature_c"];
 }
 
 @end
