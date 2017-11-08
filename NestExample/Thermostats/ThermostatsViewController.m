@@ -9,6 +9,8 @@
 #import "ThermostatsViewController.h"
 #import "Structure.h"
 #import "ThermostatManager.h"
+#import "ThermostatTableViewCell.h"
+#import "UIViewController+Nest.h"
 
 @interface ThermostatsViewController ()<UITableViewDataSource, UITableViewDelegate, ThermostatManagerDelegate>
 
@@ -22,6 +24,7 @@
 - (instancetype)initWithStructure:(Structure *)structure {
     if (self = [super init]) {
         self.structure = structure;
+        self.managers = [NSMutableArray array];
         for (Thermostat *thermostat in structure.thermostats) {
             ThermostatManager *manager = [[ThermostatManager alloc] initWithThermostat:thermostat];
             manager.delegate = self;
@@ -33,6 +36,7 @@
 
 - (void)loadView {
     [super loadView];
+    self.view.backgroundColor = UIColor.lightGrayColor;
     self.thermostatsTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     [self.view addSubview:self.thermostatsTableView];
     self.thermostatsTableView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -53,9 +57,10 @@
 
 - (void)configureTableView {
     self.thermostatsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.thermostatsTableView.backgroundColor = [UIColor clearColor];
     self.thermostatsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.thermostatsTableView.allowsSelection = NO;
-    //[self.structuresTableView registerClass:[StructureTableViewCell class] forCellReuseIdentifier:NSStringFromClass([StructureTableViewCell class])];
+    [self.thermostatsTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ThermostatTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([ThermostatTableViewCell class])];
 }
 
 #pragma mark - UITableViewDataSource
@@ -69,24 +74,36 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    exit(1);
+    ThermostatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ThermostatTableViewCell class]) forIndexPath:indexPath];
+    ThermostatManager *manager = [self.managers objectAtIndex:indexPath.row];
+    [cell updateWithThermostat: manager.thermostat];
+    if (!manager.isUpdating) {
+        [manager startUpdatingDataWithCompletion:^(NSError *error) {
+            if (error) {
+                [self showErrorAlertWithMessage:error.localizedDescription];
+            }
+        }];
+    }
+    return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100.0;
+    return 155.0;
 }
 
 #pragma mark - ThermostatManagerDelegate
 - (void)thermostatManagerDidUpdateThermostatData:(ThermostatManager *)thermostatManager {
-    NSUInteger index = [self.managers indexOfObject:thermostatManager];
-    if (index) {
-        UITableViewCell *cell = [self.thermostatsTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
-        if (cell) {
-            //[cell updateWithThermostat: thermostatManager.thermostat];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSUInteger index = [self.managers indexOfObject:thermostatManager];
+        if (index) {
+            ThermostatTableViewCell *cell = [self.thermostatsTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+            if (cell) {
+                [cell updateWithThermostat: thermostatManager.thermostat];
+            }
         }
-    }
+    });
     
 }
 

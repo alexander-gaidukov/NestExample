@@ -17,6 +17,7 @@
 
 @interface ThermostatManager : NSObject
 @property (nonatomic, strong, readonly) Thermostat *thermostat;
+@property (nonatomic, assign, readonly) BOOL isUpdating;
 @property (nonatomic, weak) id<ThermostatManagerDelegate> delegate;
 - (instancetype)initWithThermostat:(Thermostat *)thermostat;
 - (void)startUpdatingDataWithCompletion:(void (^)(NSError *error))completionBlock;

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="154" id="KGk-i7-Jjw" customClass="ThermostatTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="154.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LKj-3Y-KAK">
+                        <rect key="frame" x="16" y="10" width="288" height="134.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thermostat home (70345)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qKx-4w-Zbl">
+                                <rect key="frame" x="10" y="10" width="268" height="20.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="teF-oF-ZQI">
+                                <rect key="frame" x="10" y="40.5" width="268" height="84"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4m5-td-8rX">
+                                        <rect key="frame" x="0.0" y="0.0" width="268" height="23"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current themperature:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8k-41-o5K">
+                                                <rect key="frame" x="0.0" y="0.0" width="221.5" height="23"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="20°C" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snJ-Bk-e9B">
+                                                <rect key="frame" x="221.5" y="0.0" width="46.5" height="23"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target themperature:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fB0-6w-15B">
+                                        <rect key="frame" x="0.0" y="33" width="268" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ciq-ik-eed">
+                                        <rect key="frame" x="0.0" y="61" width="268" height="23"/>
+                                        <subviews>
+                                            <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="McD-7v-M9O">
+                                                <rect key="frame" x="-2" y="0.0" width="218.5" height="24"/>
+                                            </slider>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="21°C" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4S-4q-YvW">
+                                                <rect key="frame" x="224.5" y="0.0" width="43.5" height="23"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qKx-4w-Zbl" firstAttribute="top" secondItem="LKj-3Y-KAK" secondAttribute="top" constant="10" id="1gY-Zn-eJi"/>
+                            <constraint firstAttribute="trailing" secondItem="qKx-4w-Zbl" secondAttribute="trailing" constant="10" id="BDB-Vh-DI7"/>
+                            <constraint firstItem="teF-oF-ZQI" firstAttribute="leading" secondItem="LKj-3Y-KAK" secondAttribute="leading" constant="10" id="Cgn-wE-Uuu"/>
+                            <constraint firstItem="teF-oF-ZQI" firstAttribute="top" secondItem="qKx-4w-Zbl" secondAttribute="bottom" constant="10" id="aIc-Js-NBK"/>
+                            <constraint firstAttribute="trailing" secondItem="teF-oF-ZQI" secondAttribute="trailing" constant="10" id="c0F-jE-tKP"/>
+                            <constraint firstItem="qKx-4w-Zbl" firstAttribute="leading" secondItem="LKj-3Y-KAK" secondAttribute="leading" constant="10" id="r7J-ft-f8c"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="LKj-3Y-KAK" secondAttribute="bottom" constant="10" id="aCt-WO-3Kr"/>
+                    <constraint firstItem="LKj-3Y-KAK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="o5V-3q-XgJ"/>
+                    <constraint firstItem="LKj-3Y-KAK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="xHK-FD-YJy"/>
+                    <constraint firstAttribute="trailing" secondItem="LKj-3Y-KAK" secondAttribute="trailing" constant="16" id="za4-Re-rgF"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="containerView" destination="LKj-3Y-KAK" id="e1E-qi-9UG"/>
+                <outlet property="currentTemperatureLabel" destination="snJ-Bk-e9B" id="0q5-ip-OIh"/>
+                <outlet property="nameLabel" destination="qKx-4w-Zbl" id="5dG-0B-l8C"/>
+                <outlet property="targetTemperatureLabel" destination="e4S-4q-YvW" id="K97-iv-EfA"/>
+                <outlet property="temperatureSlider" destination="McD-7v-M9O" id="Gbg-sf-Z3C"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="109"/>
+        </tableViewCell>
+    </objects>
+</document>

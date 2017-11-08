@@ -46,7 +46,9 @@
 }
 
 - (void)didLogin {
-    [(StructuresViewController *)[self.viewControllers firstObject] loadStructures];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [(StructuresViewController *)[self.viewControllers firstObject] loadStructures];
+    });
 }
 
 #pragma mark - AuthenticationManagerDelegate

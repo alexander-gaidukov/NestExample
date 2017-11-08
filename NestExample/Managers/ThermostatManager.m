@@ -18,6 +18,7 @@
 @property (nonatomic, strong) RESTClient *client;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) void (^completionBlock)(NSError *);
+@property (nonatomic, assign) BOOL isUpdating;
 
 @property (nonatomic, strong) NSURLSessionDataTask* task;
 
@@ -31,6 +32,7 @@
 
 - (instancetype)initWithThermostat:(Thermostat *)thermostat {
     if(self = [super init]) {
+        self.isUpdating = NO;
         self.thermostat = thermostat;
         self.client = [[RESTClient alloc] initWithBaseURL:[NSURL URLWithString:NestAPIEndpoint]];
     }
@@ -46,9 +48,12 @@
     if (self.completionBlock){
         self.completionBlock = nil;
     }
+    
+    self.isUpdating = NO;
 }
 
 - (void)startUpdatingDataWithCompletion:(void (^)(NSError *))completionBlock {
+    self.isUpdating = YES;
     self.completionBlock = completionBlock;
     [self pollThermostatData];
     dispatch_async(dispatch_get_main_queue(), ^{

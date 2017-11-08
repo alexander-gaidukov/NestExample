@@ -9,6 +9,7 @@
 #import "AuthenticationViewController.h"
 #import <WebKit/WebKit.h>
 #import "AuthenticationManager.h"
+#import "UIViewController+Nest.h"
 
 @interface AuthenticationViewController ()<WKNavigationDelegate>
 
@@ -71,23 +72,17 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.activityIndicator stopAnimating];
             if (error) {
-                [self showErrorMessage:error.localizedDescription];
+                [self showErrorAlertWithMessage: error.localizedDescription];
             }
         });
     }];
-}
-
-- (void)showErrorMessage:(NSString *)message {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:message preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - WKNavigationDelegate
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     [self.activityIndicator stopAnimating];
-    [self showErrorMessage:error.localizedDescription];
+    [self showErrorAlertWithMessage: error.localizedDescription];
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {

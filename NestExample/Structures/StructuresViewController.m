@@ -11,6 +11,7 @@
 #import "StructureManager.h"
 #import "StructureTableViewCell.h"
 #import "ThermostatsViewController.h"
+#import "UIViewController+Nest.h"
 
 @interface StructuresViewController ()<StructureManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -80,6 +81,9 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.activityIndicator stopAnimating];
             [self.refreshControl endRefreshing];
+            if (error) {
+                [self showErrorAlertWithMessage:error.localizedDescription];
+            }
         });
     }];
 }

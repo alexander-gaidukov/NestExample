@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BA4DB1A1FB36F020085E4C7 /* ThermostatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4DB181FB36F020085E4C7 /* ThermostatTableViewCell.m */; };
+		3BA4DB1B1FB36F020085E4C7 /* ThermostatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA4DB191FB36F020085E4C7 /* ThermostatTableViewCell.xib */; };
+		3BA4DB1F1FB375620085E4C7 /* UIViewController+Nest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4DB1E1FB375620085E4C7 /* UIViewController+Nest.m */; };
 		71A4E5A21FB2E73B0068643D /* ThermostatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A4E5A11FB2E73A0068643D /* ThermostatManager.m */; };
 		71A4E5A61FB2ECD50068643D /* ThermostatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A4E5A51FB2ECD50068643D /* ThermostatsViewController.m */; };
 		71ED8A5F1FAF0275002DF6A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A5E1FAF0275002DF6A9 /* AppDelegate.m */; };
@@ -42,6 +45,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3BA4DB171FB36F020085E4C7 /* ThermostatTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThermostatTableViewCell.h; sourceTree = "<group>"; };
+		3BA4DB181FB36F020085E4C7 /* ThermostatTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThermostatTableViewCell.m; sourceTree = "<group>"; };
+		3BA4DB191FB36F020085E4C7 /* ThermostatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThermostatTableViewCell.xib; sourceTree = "<group>"; };
+		3BA4DB1D1FB375620085E4C7 /* UIViewController+Nest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Nest.h"; sourceTree = "<group>"; };
+		3BA4DB1E1FB375620085E4C7 /* UIViewController+Nest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Nest.m"; sourceTree = "<group>"; };
 		71A4E5A01FB2E73A0068643D /* ThermostatManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThermostatManager.h; sourceTree = "<group>"; };
 		71A4E5A11FB2E73A0068643D /* ThermostatManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThermostatManager.m; sourceTree = "<group>"; };
 		71A4E5A41FB2ECD50068643D /* ThermostatsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThermostatsViewController.h; sourceTree = "<group>"; };
@@ -106,9 +114,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3BA4DB161FB36ED80085E4C7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3BA4DB171FB36F020085E4C7 /* ThermostatTableViewCell.h */,
+				3BA4DB181FB36F020085E4C7 /* ThermostatTableViewCell.m */,
+				3BA4DB191FB36F020085E4C7 /* ThermostatTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3BA4DB1C1FB375430085E4C7 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				3BA4DB1D1FB375620085E4C7 /* UIViewController+Nest.h */,
+				3BA4DB1E1FB375620085E4C7 /* UIViewController+Nest.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		71A4E5A31FB2ECB00068643D /* Thermostats */ = {
 			isa = PBXGroup;
 			children = (
+				3BA4DB161FB36ED80085E4C7 /* Cell */,
 				71A4E5A41FB2ECD50068643D /* ThermostatsViewController.h */,
 				71A4E5A51FB2ECD50068643D /* ThermostatsViewController.m */,
 			);
@@ -136,6 +164,7 @@
 		71ED8A5C1FAF0275002DF6A9 /* NestExample */ = {
 			isa = PBXGroup;
 			children = (
+				3BA4DB1C1FB375430085E4C7 /* Categories */,
 				71ED8A811FAF027E002DF6A9 /* Models */,
 				71ED8AA91FB08C41002DF6A9 /* Managers */,
 				71ED8A991FB05A9A002DF6A9 /* REST */,
@@ -328,6 +357,7 @@
 			files = (
 				71ED8A6A1FAF0275002DF6A9 /* LaunchScreen.storyboard in Resources */,
 				71ED8A671FAF0275002DF6A9 /* Assets.xcassets in Resources */,
+				3BA4DB1B1FB36F020085E4C7 /* ThermostatTableViewCell.xib in Resources */,
 				71ED8A651FAF0275002DF6A9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,7 +388,9 @@
 				71ED8AB71FB1972A002DF6A9 /* StructureTableViewCell.m in Sources */,
 				71ED8AAF1FB0F376002DF6A9 /* Structure.m in Sources */,
 				71ED8AA81FB068DA002DF6A9 /* NestNavigationController.m in Sources */,
+				3BA4DB1F1FB375620085E4C7 /* UIViewController+Nest.m in Sources */,
 				71ED8A9C1FB05ABE002DF6A9 /* RESTClient.m in Sources */,
+				3BA4DB1A1FB36F020085E4C7 /* ThermostatTableViewCell.m in Sources */,
 				71ED8A5F1FAF0275002DF6A9 /* AppDelegate.m in Sources */,
 				71ED8A841FAF029E002DF6A9 /* AccessToken.m in Sources */,
 				71ED8A8D1FAF0980002DF6A9 /* Constants.m in Sources */,
