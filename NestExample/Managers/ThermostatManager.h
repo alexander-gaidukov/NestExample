@@ -12,10 +12,11 @@
 @class Thermostat;
 
 @protocol ThermostatManagerDelegate<NSObject>
-- (void)thermostatManagerDidUpdateThermostatData:(ThermostatManager *)structureManager;
+- (void)thermostatManagerDidUpdateThermostatData:(ThermostatManager *)thermostatManager;
 @end
 
 @interface ThermostatManager : NSObject
+@property (nonatomic, strong, readonly) Thermostat *thermostat;
 @property (nonatomic, weak) id<ThermostatManagerDelegate> delegate;
 - (instancetype)initWithThermostat:(Thermostat *)thermostat;
 - (void)startUpdatingDataWithCompletion:(void (^)(NSError *error))completionBlock;
