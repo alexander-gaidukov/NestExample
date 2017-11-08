@@ -10,6 +10,7 @@
 #import "AuthenticationManager.h"
 #import "StructureManager.h"
 #import "StructureTableViewCell.h"
+#import "ThermostatsViewController.h"
 
 @interface StructuresViewController ()<StructureManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -122,6 +123,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60.0;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ThermostatsViewController *thermostatsViewController = [[ThermostatsViewController alloc] initWithStructure:[[StructureManager sharedInstance].structures objectAtIndex: indexPath.row]];
+    [self.navigationController pushViewController:thermostatsViewController animated:YES];
 }
 
 @end
