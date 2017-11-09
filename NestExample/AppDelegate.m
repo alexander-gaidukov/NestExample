@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "NestNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    NestNavigationController *navigationController = [NestNavigationController new];
+    [self.window setRootViewController:navigationController];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

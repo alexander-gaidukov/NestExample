@@ -19,6 +19,12 @@
 
 @implementation NestNavigationController
 
+- (instancetype)init {
+    StructuresViewController *structuresViewController = [StructuresViewController new];
+    self = [super initWithRootViewController:structuresViewController];
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.authManager.delegate = self;

@@ -14,7 +14,6 @@
 		71A4E5A61FB2ECD50068643D /* ThermostatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A4E5A51FB2ECD50068643D /* ThermostatsViewController.m */; };
 		71ED8A5F1FAF0275002DF6A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A5E1FAF0275002DF6A9 /* AppDelegate.m */; };
 		71ED8A621FAF0275002DF6A9 /* StructuresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A611FAF0275002DF6A9 /* StructuresViewController.m */; };
-		71ED8A651FAF0275002DF6A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71ED8A631FAF0275002DF6A9 /* Main.storyboard */; };
 		71ED8A671FAF0275002DF6A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71ED8A661FAF0275002DF6A9 /* Assets.xcassets */; };
 		71ED8A6A1FAF0275002DF6A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71ED8A681FAF0275002DF6A9 /* LaunchScreen.storyboard */; };
 		71ED8A6D1FAF0275002DF6A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ED8A6C1FAF0275002DF6A9 /* main.m */; };
@@ -59,7 +58,6 @@
 		71ED8A5E1FAF0275002DF6A9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		71ED8A601FAF0275002DF6A9 /* StructuresViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StructuresViewController.h; sourceTree = "<group>"; };
 		71ED8A611FAF0275002DF6A9 /* StructuresViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StructuresViewController.m; sourceTree = "<group>"; };
-		71ED8A641FAF0275002DF6A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		71ED8A661FAF0275002DF6A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71ED8A691FAF0275002DF6A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71ED8A6B1FAF0275002DF6A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				71ED8AA71FB068DA002DF6A9 /* NestNavigationController.m */,
 				71ED8A8B1FAF0980002DF6A9 /* Constants.h */,
 				71ED8A8C1FAF0980002DF6A9 /* Constants.m */,
-				71ED8A631FAF0275002DF6A9 /* Main.storyboard */,
 				71ED8A661FAF0275002DF6A9 /* Assets.xcassets */,
 				71ED8A681FAF0275002DF6A9 /* LaunchScreen.storyboard */,
 				71ED8A6B1FAF0275002DF6A9 /* Info.plist */,
@@ -358,7 +355,6 @@
 				71ED8A6A1FAF0275002DF6A9 /* LaunchScreen.storyboard in Resources */,
 				71ED8A671FAF0275002DF6A9 /* Assets.xcassets in Resources */,
 				3BA4DB1B1FB36F020085E4C7 /* ThermostatTableViewCell.xib in Resources */,
-				71ED8A651FAF0275002DF6A9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,14 +414,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		71ED8A631FAF0275002DF6A9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				71ED8A641FAF0275002DF6A9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		71ED8A681FAF0275002DF6A9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
