@@ -65,7 +65,7 @@
                 err = [[NSError alloc] initWithDomain:@"Nest" code:httpResponse.statusCode userInfo:@{NSLocalizedDescriptionKey: [json objectForKey:@"message"]}];
             }
             if(failure) {
-                failure(error);
+                failure(err);
             }
         }
     }];

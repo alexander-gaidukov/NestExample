@@ -51,6 +51,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"Thermostats";
     self.thermostatsTableView.dataSource = self;
     self.thermostatsTableView.delegate = self;
 }
@@ -78,11 +79,7 @@
     ThermostatManager *manager = [self.managers objectAtIndex:indexPath.row];
     [cell updateWithThermostat: manager.thermostat];
     if (!manager.isUpdating) {
-        [manager startUpdatingDataWithCompletion:^(NSError *error) {
-            if (error) {
-                [self showErrorAlertWithMessage:error.localizedDescription];
-            }
-        }];
+        [manager startUpdatingDataWithCompletion: nil];
     }
     return cell;
 }
@@ -95,16 +92,14 @@
 
 #pragma mark - ThermostatManagerDelegate
 - (void)thermostatManagerDidUpdateThermostatData:(ThermostatManager *)thermostatManager {
+    NSUInteger index = [self.managers indexOfObject:thermostatManager];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSUInteger index = [self.managers indexOfObject:thermostatManager];
-        if (index) {
-            ThermostatTableViewCell *cell = [self.thermostatsTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
-            if (cell) {
-                [cell updateWithThermostat: thermostatManager.thermostat];
-            }
+        ThermostatTableViewCell *cell = [self.thermostatsTableView cellForRowAtIndexPath:indexPath];
+        if (cell) {
+            [cell updateWithThermostat:thermostatManager.thermostat];
         }
     });
-    
 }
 
 @end

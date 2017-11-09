@@ -33,7 +33,7 @@
 }
 
 - (void)updateWith:(NSDictionary *)json {
-    self.thermostatId = [json objectForKey:@"thermostat_id"];
+    self.thermostatId = [json objectForKey:@"device_id"];
     self.name = [json objectForKey:@"name_long"];
     self.currentTemperature = [json objectForKey:@"ambient_temperature_c"];
     self.targetTemperature = [json objectForKey:@"target_temperature_c"];
