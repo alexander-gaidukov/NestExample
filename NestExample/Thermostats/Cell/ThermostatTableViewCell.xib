@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -92,10 +92,10 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="containerView" destination="LKj-3Y-KAK" id="e1E-qi-9UG"/>
-                <outlet property="currentTemperatureLabel" destination="snJ-Bk-e9B" id="0q5-ip-OIh"/>
+                <outlet property="currentTemperatureLabel" destination="snJ-Bk-e9B" id="CHM-iG-vnu"/>
                 <outlet property="nameLabel" destination="qKx-4w-Zbl" id="5dG-0B-l8C"/>
-                <outlet property="targetTemperatureLabel" destination="e4S-4q-YvW" id="K97-iv-EfA"/>
-                <outlet property="temperatureSlider" destination="McD-7v-M9O" id="Gbg-sf-Z3C"/>
+                <outlet property="targetTemperatureLabel" destination="e4S-4q-YvW" id="vhv-UZ-hMo"/>
+                <outlet property="temperatureSlider" destination="McD-7v-M9O" id="DHV-sj-732"/>
             </connections>
             <point key="canvasLocation" x="34" y="109"/>
         </tableViewCell>

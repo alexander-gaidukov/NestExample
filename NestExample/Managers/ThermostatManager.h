@@ -20,6 +20,8 @@
 @property (nonatomic, assign, readonly) BOOL isUpdating;
 @property (nonatomic, weak) id<ThermostatManagerDelegate> delegate;
 - (instancetype)initWithThermostat:(Thermostat *)thermostat;
-- (void)startUpdatingDataWithCompletion:(void (^)(NSError *error))completionBlock;
+- (void)startUpdatingDataWithCompletion:(void (^)(NSError *))completionBlock;
 - (void)stopUpdatingData;
+- (void)setTargetTemperature:(NSNumber *)temperature withCompletion:(void(^)(NSError *))completionBlock;
+
 @end

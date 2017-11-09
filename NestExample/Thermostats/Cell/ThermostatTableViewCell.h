@@ -9,8 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @class Thermostat;
+@class ThermostatTableViewCell;
+
+@protocol ThermostatTableViewCellDelegate<NSObject>
+- (void)thermostatTableViewCell:(ThermostatTableViewCell *)cell didSetTargetTemperature:(NSNumber *)temperature;
+@end
 
 @interface ThermostatTableViewCell : UITableViewCell
+
+@property(nonatomic, weak) id<ThermostatTableViewCellDelegate> delegate;
 
 - (void)updateWithThermostat:(Thermostat *)thermostat;
 

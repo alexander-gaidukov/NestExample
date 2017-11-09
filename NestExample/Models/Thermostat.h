@@ -18,4 +18,6 @@
 
 - (instancetype)initWithId:(NSString *)thermostatId;
 
+- (NSDictionary *)updateParams;
+
 @end

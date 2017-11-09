@@ -11,6 +11,8 @@
 #import "Keychain.h"
 #import "AccessToken.h"
 
+#define ACCESS_TOKEN_KEYCHAIN_KEY @"access_token"
+
 @interface AuthenticationManager()
 
 @property(nonatomic, strong) NSString *productId;
@@ -113,7 +115,7 @@
 #pragma mark private
 
 - (AccessToken *)accessToken {
-    NSData *accessTokenData = [Keychain loadForIdentifier:@"access_token"];
+    NSData *accessTokenData = [Keychain loadForIdentifier:ACCESS_TOKEN_KEYCHAIN_KEY];
     if (accessTokenData) {
         return  [NSKeyedUnarchiver unarchiveObjectWithData:accessTokenData];
     }
@@ -122,9 +124,9 @@
 
 - (void)setAccessToken:(AccessToken *)accessToken {
     if (accessToken) {
-        [Keychain saveValue:[NSKeyedArchiver archivedDataWithRootObject:accessToken] forIdentifier:@"access_token"];
+        [Keychain saveValue:[NSKeyedArchiver archivedDataWithRootObject:accessToken] forIdentifier:ACCESS_TOKEN_KEYCHAIN_KEY];
     } else {
-        [Keychain deleteItemForIdentifier:@"access_token"];
+        [Keychain deleteItemForIdentifier:ACCESS_TOKEN_KEYCHAIN_KEY];
     }
 }
 

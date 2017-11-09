@@ -12,7 +12,7 @@
 #import "ThermostatTableViewCell.h"
 #import "UIViewController+Nest.h"
 
-@interface ThermostatsViewController ()<UITableViewDataSource, UITableViewDelegate, ThermostatManagerDelegate>
+@interface ThermostatsViewController ()<UITableViewDataSource, UITableViewDelegate, ThermostatManagerDelegate, ThermostatTableViewCellDelegate>
 
 @property(nonatomic, strong) Structure *structure;
 @property(nonatomic, strong) UITableView* thermostatsTableView;
@@ -78,6 +78,7 @@
     ThermostatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ThermostatTableViewCell class]) forIndexPath:indexPath];
     ThermostatManager *manager = [self.managers objectAtIndex:indexPath.row];
     [cell updateWithThermostat: manager.thermostat];
+    cell.delegate = self;
     if (!manager.isUpdating) {
         [manager startUpdatingDataWithCompletion: nil];
     }
@@ -100,6 +101,19 @@
             [cell updateWithThermostat:thermostatManager.thermostat];
         }
     });
+}
+
+#pragma mark - ThermostatTableViewCellDelegate
+- (void)thermostatTableViewCell:(ThermostatTableViewCell *)cell didSetTargetTemperature:(NSNumber *)temperature {
+    NSIndexPath* indexPath = [self.thermostatsTableView indexPathForCell:cell];
+    if(indexPath) {
+        ThermostatManager *manager = [self.managers objectAtIndex:indexPath.row];
+        [manager setTargetTemperature:temperature withCompletion:^(NSError *error) {
+            if(error) {
+                [self showErrorAlertWithMessage:error.localizedDescription];
+            }
+        }];
+    }
 }
 
 @end

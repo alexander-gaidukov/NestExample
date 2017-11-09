@@ -8,6 +8,11 @@
 
 #import "Thermostat.h"
 
+#define DEVICE_ID_KEY @"device_id"
+#define DEVICE_NAME_KEY @"name_long"
+#define AMBIENT_TEMPERATURE_KEY @"ambient_temperature_c"
+#define TARGET_TEMPERATURE_KEY @"target_temperature_c"
+
 @interface Thermostat()
 @property (nonatomic, strong) NSString *thermostatId;
 @property (nonatomic, strong) NSString *name;
@@ -33,10 +38,14 @@
 }
 
 - (void)updateWith:(NSDictionary *)json {
-    self.thermostatId = [json objectForKey:@"device_id"];
-    self.name = [json objectForKey:@"name_long"];
-    self.currentTemperature = [json objectForKey:@"ambient_temperature_c"];
-    self.targetTemperature = [json objectForKey:@"target_temperature_c"];
+    self.thermostatId = [json objectForKey:DEVICE_ID_KEY];
+    self.name = [json objectForKey:DEVICE_NAME_KEY];
+    self.currentTemperature = [json objectForKey:AMBIENT_TEMPERATURE_KEY];
+    self.targetTemperature = [json objectForKey:TARGET_TEMPERATURE_KEY];
+}
+
+- (NSDictionary *)updateParams {
+    return @{TARGET_TEMPERATURE_KEY : self.targetTemperature};
 }
 
 @end

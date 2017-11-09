@@ -11,8 +11,6 @@
 #import "RESTClient.h"
 #import "Constants.h"
 
-#define POLL_INTERVAL 30.0f
-
 @interface ThermostatManager()
 @property (nonatomic, strong) Thermostat *thermostat;
 @property (nonatomic, strong) RESTClient *client;
@@ -21,6 +19,7 @@
 @property (nonatomic, assign) BOOL isUpdating;
 
 @property (nonatomic, strong) NSURLSessionDataTask* task;
+@property (nonatomic, strong) NSURLSessionDataTask* updateTask;
 
 @end
 
@@ -58,7 +57,7 @@
     [self pollThermostatData];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.timer invalidate];
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:POLL_INTERVAL target:self selector:@selector(pollThermostatData) userInfo:nil repeats:YES];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:NestAPIPollingInterval target:self selector:@selector(pollThermostatData) userInfo:nil repeats:YES];
     });
 }
 
@@ -79,6 +78,9 @@
         if(strongSelf.delegate) {
             [strongSelf.delegate thermostatManagerDidUpdateThermostatData:self];
         }
+        if(strongSelf.completionBlock) {
+            strongSelf.completionBlock(nil);
+        }
         strongSelf.task = nil;
     } failure:^(NSError *error) {
         if(!weakSelf) {
@@ -89,6 +91,29 @@
             strongSelf.completionBlock(error);
         }
         strongSelf.task = nil;
+    }];
+}
+
+- (void)setTargetTemperature:(NSNumber *)temperature withCompletion:(void (^)(NSError *))completionBlock {
+    
+    self.thermostat.targetTemperature = temperature;
+    
+    if (self.updateTask) { // cancel previous task
+        [self.updateTask cancel];
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    
+    self.updateTask = [self.client loadFromPath:[NSString stringWithFormat:@"devices/thermostats/%@/", self.thermostat.thermostatId] method:HTTPMethodPUT params:self.thermostat.updateParams success:^(NSDictionary *json) {
+        if(completionBlock) {
+            completionBlock(nil);
+        }
+        weakSelf.updateTask = nil;
+    } failure:^(NSError *error) {
+        if(completionBlock) {
+            completionBlock(error);
+        }
+        weakSelf.updateTask = nil;
     }];
 }
 

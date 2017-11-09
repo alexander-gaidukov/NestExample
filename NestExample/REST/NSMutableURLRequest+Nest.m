@@ -14,6 +14,8 @@
 - (instancetype)initWithBaseURL:(NSURL *)baseURL path:(NSString *)path method:(HTTPMethod)method params:(NSDictionary *)params {
     NSURL *url = [[NSURL alloc] initWithBaseURL:baseURL path:path method:method params:params];
     self = [self initWithURL:url];
+    
+    self.cachePolicy = NSURLRequestReloadIgnoringCacheData;
 
     if (method == HTTPMethodGET) {
         self.HTTPMethod = @"GET";
