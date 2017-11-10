@@ -55,7 +55,7 @@
         [strongSelf.mutableStructures removeAllObjects];
         NSArray *allValues = json.allValues;
         for (NSDictionary *structureJSON in allValues) {
-            Structure *structure = [[Structure alloc] initWith:structureJSON];
+            Structure *structure = [[Structure alloc] initWithJSON:structureJSON];
             [strongSelf.mutableStructures addObject:structure];
             if (strongSelf.delegate) {
                 [strongSelf.delegate structureManagerDidUpdateData:self];

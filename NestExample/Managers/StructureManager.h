@@ -21,7 +21,7 @@
 @property (nonatomic, strong, readonly) NSArray *structures;
 @property (nonatomic, weak) id<StructureManagerDelegate> delegate;
 
-+ (instancetype) sharedInstance;
++ (instancetype)sharedInstance;
 
 - (void)loadStructuresWithCompletion:(void (^)(NSError *error))completionBlock;
 

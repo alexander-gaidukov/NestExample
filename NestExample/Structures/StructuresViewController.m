@@ -130,6 +130,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ThermostatsViewController *thermostatsViewController = [[ThermostatsViewController alloc] initWithStructure:[[StructureManager sharedInstance].structures objectAtIndex: indexPath.row]];
     [self.navigationController pushViewController:thermostatsViewController animated:YES];
 }

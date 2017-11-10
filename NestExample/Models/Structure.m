@@ -19,7 +19,7 @@
 
 @implementation Structure
 
-- (instancetype)initWith:(NSDictionary *)json {
+- (instancetype)initWithJSON:(NSDictionary *)json {
     if (self = [super init]) {
         self.structureId = [json objectForKey:STRUCTURE_ID_KEY];
         self.name = [json objectForKey:STRUCTURE_NAME_KEY];

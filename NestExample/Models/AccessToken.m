@@ -13,7 +13,7 @@
 
 @implementation AccessToken
 
-- (instancetype)initWith:(NSDictionary *)json {
+- (instancetype)initWithJSON:(NSDictionary *)json {
     if (self = [super init]) {
         self.token = [json objectForKey:ACCESS_TOKEN_KEY];
         NSTimeInterval timeInterval = [[json objectForKey:EXPIRES_IN_KEY] doubleValue];

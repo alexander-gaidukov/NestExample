@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol JSONDecodable <NSObject>
-- (instancetype)initWith:(NSDictionary *)json;
+- (instancetype)initWithJSON:(NSDictionary *)json;
 @optional
-- (void) updateWith:(NSDictionary *)json;
+- (void)updateWithJSON:(NSDictionary *)json;
 @end

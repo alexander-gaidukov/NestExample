@@ -79,7 +79,7 @@
         if (data) {
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
             if (json) {
-                AccessToken *accessToken = [[AccessToken alloc] initWith:json];
+                AccessToken *accessToken = [[AccessToken alloc] initWithJSON:json];
                 self.accessToken = accessToken;
                 success = YES;
                 if (self.delegate) {

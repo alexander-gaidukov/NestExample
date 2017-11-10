@@ -21,9 +21,9 @@
 
 @implementation Thermostat
 
-- (instancetype)initWith:(NSDictionary *)json {
+- (instancetype)initWithJSON:(NSDictionary *)json {
     if(self = [super init]) {
-        [self updateWith:json];
+        [self updateWithJSON:json];
     }
     
     return self;
@@ -37,7 +37,7 @@
     return self;
 }
 
-- (void)updateWith:(NSDictionary *)json {
+- (void)updateWithJSON:(NSDictionary *)json {
     self.thermostatId = [json objectForKey:DEVICE_ID_KEY];
     self.name = [json objectForKey:DEVICE_NAME_KEY];
     self.currentTemperature = [json objectForKey:AMBIENT_TEMPERATURE_KEY];

@@ -74,7 +74,7 @@
             return;
         }
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf.thermostat updateWith:json];
+        [strongSelf.thermostat updateWithJSON:json];
         if(strongSelf.delegate) {
             [strongSelf.delegate thermostatManagerDidUpdateThermostatData:self];
         }
